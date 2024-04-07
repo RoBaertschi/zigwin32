@@ -5,7 +5,9 @@ const testing = std.testing;
 
 const root = @import("root");
 pub const UnicodeMode = enum { ansi, wide, unspecified };
-pub const unicode_mode: UnicodeMode = if (@hasDecl(root, "UNICODE")) (if (root.UNICODE) .wide else .ansi) else .unspecified;
+// pub const unicode_mode: UnicodeMode = if (@hasDecl(root, "UNICODE")) (if (root.UNICODE) .wide else .ansi) else .unspecified;
+// I don't need the unicode change thingy, as my users should not have controll over it
+pub const unicode_mode: UnicodeMode = .wide;
 
 const is_zig_0_11 = std.mem.eql(u8, builtin.zig_version_string, "0.11.0");
 
